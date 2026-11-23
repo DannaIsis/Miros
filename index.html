@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feliz 30, Lau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: una libreta abierta. Hoja cuadriculada, secciones como páginas pegadas con cinta, piñata como detalle interactivo. */
+:root {
+  --paper: #fbfcff;
+  --grid: #dfe7fb;
+  --ink: #23233b;
+  --muted: #5d5f7e;
+  --pink: #ff4f8b;
+  --sun: #ffc233;
+  --teal: #12b5a6;
+  --violet: #6a4cff;
+  --display: "Fredoka", "Trebuchet MS", sans-serif;
+  --body: "Nunito", system-ui, sans-serif;
+  --hand: "Caveat", "Segoe Script", cursive;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.6;
+}
+main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; display: flex; flex-direction: column; gap: 40px; }
+h1, h2 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.1; }
+p { margin: 0; }
+
+/* Portada */
+.hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding-top: 24px; }
+.hand { font-family: var(--hand); font-size: 30px; color: var(--violet); font-weight: 700; }
+.big30 {
+  font-family: var(--display); font-weight: 700; font-size: clamp(120px, 34vw, 220px); line-height: .9;
+  color: var(--pink); letter-spacing: -4px;
+  text-shadow: 6px 6px 0 var(--sun), 12px 12px 0 var(--teal);
+  margin: 8px 0 16px;
+}
+.hero h1 { font-size: clamp(32px, 8vw, 54px); }
+.hero .sub { max-width: 46ch; color: var(--muted); }
+
+/* Piñata */
+.pinata-wrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.pinata-btn { background: none; border: 0; cursor: pointer; padding: 8px; border-radius: 16px; }
+.pinata-btn:focus-visible, .card:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; }
+.pinata-btn svg { width: 150px; height: 150px; display: block; transform-origin: 50% 0; transition: transform .15s; }
+.pinata-btn.hit svg { animation: swing .5s; }
+@keyframes swing { 0%{transform:rotate(0)} 25%{transform:rotate(-18deg)} 60%{transform:rotate(14deg)} 100%{transform:rotate(0)} }
+.pinata-caption { font-family: var(--hand); font-size: 26px; color: var(--ink); min-height: 1.3em; }
+
+/* Páginas */
+.page {
+  position: relative; background: #fff; border: 2px solid var(--ink); border-radius: 18px;
+  padding: 36px 24px 28px; box-shadow: 8px 8px 0 var(--ink);
+}
+.tape {
+  position: absolute; top: -14px; left: 50%; width: 110px; height: 28px; transform: translateX(-50%) rotate(-3deg);
+  background: var(--sun); opacity: .9; border-radius: 3px;
+}
+.page.p2 .tape { background: var(--teal); transform: translateX(-50%) rotate(2deg); }
+.page.p3 .tape { background: var(--pink); }
+.page h2 { font-size: clamp(26px, 6vw, 36px); margin-bottom: 6px; }
+.page .lead { color: var(--muted); margin-bottom: 20px; }
+
+/* Boletín */
+.report { width: 100%; border-collapse: collapse; }
+.report th { font-family: var(--hand); font-size: 24px; text-align: left; color: var(--violet); padding: 4px 8px; border-bottom: 2px solid var(--ink); }
+.report td { padding: 10px 8px; border-bottom: 2px dashed var(--grid); vertical-align: top; }
+.report td:first-child { font-weight: 700; }
+.report .obs { color: var(--muted); font-size: 16px; }
+.report .nota { font-family: var(--display); font-weight: 700; font-size: 26px; color: var(--pink); text-align: right; white-space: nowrap; }
+.sello {
+  margin: 24px auto 0; width: fit-content; transform: rotate(-4deg); border: 3px solid var(--teal); color: var(--teal);
+  font-family: var(--display); font-weight: 700; font-size: 22px; padding: 8px 18px; border-radius: 12px; text-align: center; text-transform: uppercase;
+}
+@media (max-width: 520px) {
+  .report th:nth-child(3), .report td.obs { display: none; }
+  .report .nota { font-size: 22px; }
+}
+
+/* Lau en números */
+.nums { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.tile { display: flex; flex-direction: column; gap: 4px; padding: 18px 16px; border: 2px solid var(--ink); border-radius: 14px; background: var(--paper); }
+.tile:nth-child(4n+1) { background: #fff3cc; }
+.tile:nth-child(4n+2) { background: #ffe1ec; }
+.tile:nth-child(4n+3) { background: #d9f5f2; }
+.tile:nth-child(4n+4) { background: #e8e3ff; }
+.tile .n { font-family: var(--display); font-weight: 700; font-size: 64px; line-height: 1; color: var(--ink); }
+.tile .l { font-weight: 700; font-size: 18px; line-height: 1.3; }
+.tile .d { font-family: var(--hand); font-size: 22px; color: var(--muted); line-height: 1.2; }
+
+/* Carta */
+.letter { display: flex; flex-direction: column; gap: 16px; max-width: 60ch; }
+.letter p { font-size: 19px; }
+.firma { font-family: var(--hand); font-size: 34px; color: var(--pink); font-weight: 700; margin-top: 8px; }
+
+footer { text-align: center; font-family: var(--hand); font-size: 26px; color: var(--muted); }
+canvas#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+@media (prefers-reduced-motion: reduce) { .pinata-btn.hit svg { animation: none; } }
+</style>
+</head>
+<body>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<main>
+
+  <header class="hero">
+    <span class="hand">23 de noviembre</span>
+    <div class="big30" aria-hidden="true">30</div>
+    <h1>¡Feliz cumpleaños, Lau!</h1>
+    <p class="sub">Treinta años de creatividad, carácter y corazón. Esta libreta está hecha para ti.</p>
+
+    <div class="pinata-wrap">
+      <button class="pinata-btn" id="pinata" type="button" aria-label="Golpear la piñata">
+        <svg viewBox="0 0 200 200" role="img" aria-hidden="true">
+          <line x1="100" y1="0" x2="100" y2="38" stroke="#23233b" stroke-width="4"/>
+          <polygon points="100,34 118,70 158,62 140,98 172,126 132,130 120,170 100,140 80,170 68,130 28,126 60,98 42,62 82,70" fill="#ff4f8b" stroke="#23233b" stroke-width="5" stroke-linejoin="round"/>
+          <polygon points="100,56 110,82 134,80 120,100 136,118 112,120 104,144 100,128 96,144 88,120 64,118 80,100 66,80 90,82" fill="#ffc233" stroke="#23233b" stroke-width="3" stroke-linejoin="round"/>
+          <circle cx="100" cy="100" r="14" fill="#12b5a6" stroke="#23233b" stroke-width="3"/>
+        </svg>
+      </button>
+      <div class="pinata-caption" id="caption" aria-live="polite">Dale 3 golpes a la piñata</div>
+    </div>
+  </header>
+
+  <section class="page p1" aria-labelledby="t-boletin">
+    <span class="tape"></span>
+    <h2 id="t-boletin">Boletín de calificaciones de Lau</h2>
+    <p class="lead">Evaluación a cargo de una amiga que te conoce bien. Hoy la maestra recibe las notas.</p>
+    <table class="report">
+      <thead><tr><th>Materia</th><th>Observaciones</th><th style="text-align:right">Nota</th></tr></thead>
+      <tbody>
+        <tr><td>Creatividad</td><td class="obs">Todo lo que toca con las manos queda bonito.</td><td class="nota">10</td></tr>
+        <tr><td>Ternura</td><td class="obs">Dulce de verdad, sobre todo con los suyos.</td><td class="nota">10</td></tr>
+        <tr><td>Liderazgo</td><td class="obs">Da instrucciones con mucha seguridad. Con razón, casi siempre.</td><td class="nota">10</td></tr>
+        <tr><td>Sinceridad</td><td class="obs">Dice lo que piensa. Sin anestesia.</td><td class="nota">10</td></tr>
+        <tr><td>Ojo crítico</td><td class="obs">Nada se le escapa. En proceso de ser un poquito más suave.</td><td class="nota">9.5</td></tr>
+        <tr><td>Inteligencia</td><td class="obs">Sobresaliente en todo lo que se propone.</td><td class="nota">10</td></tr>
+        <tr><td>Valentía</td><td class="obs">Ha enfrentado cosas que muchos no se atreverían.</td><td class="nota">10</td></tr>
+        <tr><td>Comunicación</td><td class="obs">Expresa sus ideas con claridad. Hay que estar preparado.</td><td class="nota">10</td></tr>
+        <tr><td>Maternidad</td><td class="obs">Tres hijos, mil preocupaciones y un amor enorme.</td><td class="nota">10</td></tr>
+        <tr><td>Vocación docente</td><td class="obs">Se nota que nació para enseñar.</td><td class="nota">10</td></tr>
+      </tbody>
+    </table>
+    <div class="sello">Promovida a los 30 con honores</div>
+  </section>
+
+  <section class="page p2" aria-labelledby="t-numeros">
+    <span class="tape"></span>
+    <h2 id="t-numeros">Lau en números</h2>
+    <p class="lead">Los que de verdad cuentan.</p>
+    <ul class="nums">
+      <li class="tile"><span class="n">15</span><span class="l">años de amistad</span><span class="d">la mitad de su vida</span></li>
+      <li class="tile"><span class="n">12</span><span class="l">años siendo mamá</span></li>
+      <li class="tile"><span class="n">8</span><span class="l">años siendo maestra</span><span class="d">por vocación</span></li>
+      <li class="tile"><span class="n">3</span><span class="l">hijos hermosos</span><span class="d">Santi, Meli y Cami</span></li>
+      <li class="tile"><span class="n">2</span><span class="l">mejores amigas</span><span class="d">Ale y Dani</span></li>
+      <li class="tile"><span class="n">&infin;</span><span class="l">manualidades hechas</span><span class="d">incontables. Dato de tu amiga matemática</span></li>
+    </ul>
+  </section>
+
+  <section class="page p3" aria-labelledby="t-carta">
+    <span class="tape"></span>
+    <h2 id="t-carta">Para Miros</h2>
+    <div class="letter">
+      <p>Desde mi rincón en el mundo quiero recordarte que te quiero, que sigo aquí, que celebro tu vida y tus logros. Y aun en la distancia me siento parte de ella.</p>
+      <p>Que como mujer me pareces extraordinaria. Siempre admiré tu sinceridad, tu fuerza y tu modo de defender tus gustos y tus decisiones, aunque fueran incorrectas, jeje.</p>
+      <p>Jamás sientas culpa porque nuestra amistad no se vea de cierta manera. Nuestra amistad es siempre un regalo para mí.</p>
+      <p>La vida aún nos debe vivir cosas juntas. Pero aún nos queda mucha vida. Nos espera. Por ahora...</p>
+      <p>Bienvenida al tercer piso.</p>
+      <p>Te amo.</p>
+      <p>Feliz cumpleaños.</p>
+      <p class="firma">Dani</p>
+    </div>
+  </section>
+
+  <footer>Lau · 30 · 2026</footer>
+</main>
+
+<script>
+(function () {
+  /* Confeti */
+  var cv = document.getElementById('confetti'), ctx = cv.getContext('2d'), parts = [], running = false;
+  var colors = ['#ff4f8b', '#ffc233', '#12b5a6', '#6a4cff', '#23233b'];
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size() { cv.width = innerWidth; cv.height = innerHeight; }
+  size(); addEventListener('resize', size);
+  function burst(x, y, n) {
+    if (reduce) return;
+    for (var i = 0; i < n; i++) {
+      var a = Math.random() * Math.PI * 2, v = 4 + Math.random() * 9;
+      parts.push({ x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 5, w: 6 + Math.random() * 7, h: 4 + Math.random() * 5,
+        r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: colors[(Math.random() * colors.length) | 0], life: 140 + Math.random() * 60 });
+    }
+    if (!running) { running = true; requestAnimationFrame(tick); }
+  }
+  function tick() {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    parts = parts.filter(function (p) { return p.life > 0 && p.y < cv.height + 20; });
+    parts.forEach(function (p) {
+      p.vy += .25; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life--;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore();
+    });
+    if (parts.length) requestAnimationFrame(tick); else { running = false; ctx.clearRect(0, 0, cv.width, cv.height); }
+  }
+
+  /* Piñata */
+  var btn = document.getElementById('pinata'), cap = document.getElementById('caption'), hits = 0;
+  var msgs = ['¡Uno! Todavía aguanta.', '¡Dos! Ya casi.', '¡Se rompió! Premio: un abrazo enorme y todo mi cariño.'];
+  btn.addEventListener('click', function () {
+    var r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+    btn.classList.remove('hit'); void btn.offsetWidth; btn.classList.add('hit');
+    if (hits < 3) { cap.textContent = msgs[hits]; hits++; burst(x, y, hits === 3 ? 160 : 24); }
+    else { hits = 0; cap.textContent = 'Dale 3 golpes a la piñata'; }
+    if (hits === 3) {
+      setTimeout(function () { burst(innerWidth * .2, innerHeight * .3, 80); burst(innerWidth * .8, innerHeight * .3, 80); }, 250);
+    }
+  });
+  setTimeout(function () { burst(innerWidth / 2, innerHeight * .3, 90); }, 500);
+})();
+</script>
+</body>
+</html>
